@@ -11,13 +11,16 @@ class AndroidSettings extends LocationSettings {
   /// - forceLocationManager: false
   AndroidSettings({
     this.forceLocationManager = false,
-    super.accuracy,
-    super.distanceFilter,
+    LocationAccuracy accuracy = LocationAccuracy.best,
+    int distanceFilter = 0,
     this.intervalDuration,
-    super.timeLimit,
+    Duration? timeLimit,
     this.foregroundNotificationConfig,
     this.useMSLAltitude = false,
-  });
+  }) : super(
+            accuracy: accuracy,
+            distanceFilter: distanceFilter,
+            timeLimit: timeLimit);
 
   /// Forces the Geolocator plugin to use the legacy LocationManager instead of
   /// the FusedLocationProviderClient (Android only).
